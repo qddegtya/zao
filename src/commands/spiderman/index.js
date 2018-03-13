@@ -190,6 +190,7 @@ export default class PushCommand extends BaseCommand {
     this.removeChildnodesFromNode(bodyNode, BLACK_LIST_FILTER)
 
     // add
+    this.addNodesFromFragment(headNode, linkSnippetFragment)
     this.addNodesFromFragment(headNode, patchjsLoadSnippetFragment)
     this.addNodesFromFragment(headNode, webRaxFrameworkSnippetFragment)
     this.addNodesFromFragment(headNode, polyfillSnippetFragment)
@@ -202,7 +203,7 @@ export default class PushCommand extends BaseCommand {
     // TODO: make it easy to use
 
     // link patch
-    this.addNodesFromFragment(bodyNode, linkSnippetFragment)
+    // this.addNodesFromFragment(bodyNode, linkSnippetFragment)
 
     // output document
     const outputDocument = this.compressHtml(parse5.serialize(document))
@@ -210,7 +211,7 @@ export default class PushCommand extends BaseCommand {
     // add some content to bundlejs
     const zeptoBundlejs = yield this.getRemoteContent(config.umdjs.zepto)
     const chestAppBundlejs = yield this.getRemoteContent(config.umdjs.chest)
-
+    
     bundlejs = zeptoBundlejs + chestAppBundlejs + bundlejs
 
     // pull bundlejs

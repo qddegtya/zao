@@ -1,31 +1,34 @@
 <script>
-  if (ap) {
+  window.onload = function () {
     setTimeout(function () {
-      var links = document.querySelectorAll('a');
-      Array.prototype.forEach.call(links, function (link) {
-        link.setAttribute('data-href', link.getAttribute('href'));
-        link.removeAttribute('href');
-        link.addEventListener('click', function () {
-          var href = link.getAttribute('data-href');
-          var splitterIndex = href.indexOf('?');
-          var url = href.slice(0, splitterIndex);
-          var qs = href.slice(splitterIndex, href.length);
-          var queryObject = ap.parseQueryString(qs);
-          
-          // TODO
-          // 手工处理 SPM 参数
+      if (window.ap && /AliApp\(AP\//ig.test(window.navigator.userAgent)) {
+        var links = document.querySelectorAll('a');
+        Array.prototype.forEach.call(links, function (link) {
+          link.setAttribute('data-href', link.getAttribute('href'));
+          link.removeAttribute('href');
+          link.addEventListener('click', function () {
+            var href = link.getAttribute('data-href');
+            var splitterIndex = href.indexOf('?');
+            var url = href.slice(0, splitterIndex);
+            var qs = href.slice(splitterIndex, href.length);
+            var queryObject = ap.parseQueryString(qs);
 
-          ap.pushWindow({
-            url: url,
-            data: queryObject,
-            // 容器启动参数
-            params: {
-              showLoading: "YES",
-              transparentTitle: "none"
-            }
+            // TODO
+            // 手工处理 SPM 参数
+
+            window.ap.pushWindow({
+              url: url,
+              data: queryObject,
+              // 容器启动参数
+              params: {
+                showLoading: "YES",
+                transparentTitle: "none",
+                pullRefresh: "YES"
+              }
+            });
           });
         });
-      });
+      }
     }, 0);
   }
 </script>

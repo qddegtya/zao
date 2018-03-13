@@ -1,7 +1,7 @@
 const ENV = process.env.ENV || 'daily'
 const GROUP = 'alim'
 const PROJECT = 'alipay-hysc'
-const VERSION = '1.0.15'
+const VERSION = '1.0.46'
 const FILE = 'index.js'
 const AUTHOR = 112754
 const OUTDIR = 'bundlejs'
@@ -31,7 +31,7 @@ const config = {
   },
   umdjs: {
     zepto: 'https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js',
-    chest: 'https://astyle.alicdn.com/pkg/@alife/mlofty-h5-chest/1.0.9/index.js'
+    chest: 'https://astyle.alicdn.com/pkg/@alife/mlofty-h5-chest/1.0.10/index.js'
   }
 }
 
