@@ -1,0 +1,46 @@
+{
+  "name": "zao-cli",
+  "version": "0.0.1",
+  "description": "造（Zao）- 基于 Github 管理的造轮子模板（脚手架）管理工具",
+  "bin": {
+    "zao": "./bin/zao"
+  },
+  "main": "./lib",
+  "scripts": {
+    "lint": "eslint --ext .js src/** --fix",
+    "dev": "npm run lint && babel src --out-dir lib --watch",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qddegtya/zao.git"
+  },
+  "keywords": [
+    "zao",
+    "github",
+    "template"
+  ],
+  "author": "qddegtya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qddegtya/zao/issues"
+  },
+  "homepage": "https://github.com/qddegtya/zao#readme",
+  "dependencies": {
+    "@ali/air-cli-sdk": "^1.0.6",
+    "@ali/just-mobile-core": "^1.0.2",
+    "commander": "^2.11.0",
+    "gradient-string": "^1.0.0",
+    "html-minifier": "^3.5.10",
+    "parse5": "^4.0.0",
+    "urllib": "^2.26.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "debug": "^3.1.0",
+    "eslint": "^3.19.0"
+  }
+}
