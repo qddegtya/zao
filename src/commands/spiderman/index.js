@@ -183,17 +183,21 @@ export default class PushCommand extends BaseCommand {
     const fastclickSnippetFragment = yield this.parseSnippet(yield this.loadSnippet('fastclick'))
     const polyfillSnippetFragment = yield this.parseSnippet(yield this.loadSnippet('pollyfill'))
     const webRaxFrameworkSnippetFragment = yield this.parseSnippet(yield this.loadSnippet('web-rax-framework'))
+    // const pageDataSnippetFragment = yield this.parseSnippet(yield this.loadSnippet('page-data'))
     const linkSnippetFragment = yield this.parseSnippet(yield this.loadSnippet('link'))
+    const resetStyleFragment = yield this.parseSnippet(yield this.loadSnippet('reset-style'))
 
     // remove
     this.removeChildnodesFromNode(headNode, BLACK_LIST_FILTER)
     this.removeChildnodesFromNode(bodyNode, BLACK_LIST_FILTER)
 
     // add
-    this.addNodesFromFragment(headNode, linkSnippetFragment)
+    this.addNodesFromFragment(headNode, resetStyleFragment)
     this.addNodesFromFragment(headNode, patchjsLoadSnippetFragment)
+    this.addNodesFromFragment(headNode, linkSnippetFragment)
     this.addNodesFromFragment(headNode, webRaxFrameworkSnippetFragment)
     this.addNodesFromFragment(headNode, polyfillSnippetFragment)
+    // this.addNodesFromFragment(headNode, pageDataSnippetFragment)
     this.addNodesFromFragment(headNode, fastclickSnippetFragment)
 
     // patchjs start

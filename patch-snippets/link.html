@@ -1,13 +1,21 @@
 <script>
-  window.onload = function () {
-    setTimeout(function () {
-      if (window.ap && /AliApp\(AP\//ig.test(window.navigator.userAgent)) {
-        var links = document.querySelectorAll('a');
-        Array.prototype.forEach.call(links, function (link) {
-          link.setAttribute('data-href', link.getAttribute('href'));
-          link.removeAttribute('href');
-          link.addEventListener('click', function () {
-            var href = link.getAttribute('data-href');
+  if (window.ap && /AliApp\(AP\//ig.test(window.navigator.userAgent)) {
+    document.addEventListener('click', function (e) {
+      var path = e.path || (e.composedPath && e.composedPath());
+
+      if (path) {
+        Array.prototype.forEach.call(path, function (el) {
+          if ('A' === el.tagName) {
+            var href = '';
+
+            href = el.getAttribute('data-href');
+
+            if (!href) {
+              href = el.getAttribute('href');
+              el.setAttribute('data-href', href);
+              el.removeAttribute('href');
+            }
+
             var splitterIndex = href.indexOf('?');
             var url = href.slice(0, splitterIndex);
             var qs = href.slice(splitterIndex, href.length);
@@ -26,9 +34,9 @@
                 pullRefresh: "YES"
               }
             });
-          });
+          }
         });
       }
-    }, 0);
+    });
   }
 </script>
