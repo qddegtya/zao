@@ -1,5 +1,15 @@
 <script>
   if (window.ap && /AliApp\(AP\//ig.test(window.navigator.userAgent)) {
+    function ready(callback) {
+      // 如果jsbridge已经注入则直接调用
+      if (window.AlipayJSBridge) {
+        callback && callback();
+      } else {
+        // 如果没有注入则监听注入的事件
+        document.addEventListener('AlipayJSBridgeReady', callback, false);
+      }
+    }
+
     document.addEventListener('click', function (e) {
       function composedPath(el) {
         var path = [];
@@ -42,16 +52,23 @@
               }
             }
 
-            window.ap.pushWindow({
-              url: url,
-              data: queryObject,
-              // 容器启动参数
-              params: {
-                showLoading: "YES",
-                transparentTitle: "none",
-                pullRefresh: "YES",
-                showOptionMenu: "YES"
-              }
+            ready(function () {
+              AlipayJSBridge.call('aliAutoLogin', {
+                H5AutoLoginUrl: url,
+                H5AutoLoginNeedBindingPage: 'NO',
+              }, function (result) {
+                window.ap.pushWindow({
+                  url: url,
+                  data: queryObject,
+                  // 容器启动参数
+                  params: {
+                    showLoading: "YES",
+                    transparentTitle: "none",
+                    pullRefresh: "YES",
+                    showOptionMenu: "YES"
+                  }
+                });
+              });
             });
           }
         });
