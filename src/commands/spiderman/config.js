@@ -1,7 +1,7 @@
 const ENV = process.env.ENV || 'daily'
 const GROUP = 'alim'
 const PROJECT = 'alipay-hysc'
-const VERSION = '1.3.0'
+const VERSION = '1.5.0'
 const FILE = 'index.js'
 const AUTHOR = 112754
 const OUTDIR = 'bundlejs'
@@ -32,6 +32,13 @@ const config = {
   umdjs: {
     zepto: 'https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js',
     chest: 'https://astyle.alicdn.com/pkg/@alife/mlofty-h5-chest/1.1.1/index.js'
+  },
+  // FIXME
+  // 从页面上自动爬取
+  page:{
+    spmA: 'a262eq',
+    spmB: '11280316',
+    title: '货源市场 328 支付宝专项'
   }
 }
 

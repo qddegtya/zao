@@ -33,6 +33,10 @@ const BLACK_LIST_FILTER = node => {
 const AIR_PAGE_LAMBDA = id => `https://air.1688.com/roc/${id}/index.html?__pageId__=${id}`
 const AIR_BUNDLE_LAMBDA = id => `https://air.1688.com/roc/${id}/index.html?wh_ttid=native`
 
+const filterMetaViewport = node => {
+  return !(node.nodeName === 'meta' && node.attrs[0].value === 'viewport')
+}
+
 export default class PushCommand extends BaseCommand {
   static command = 'spiderman'
   static alias = 'sm'
@@ -121,11 +125,14 @@ export default class PushCommand extends BaseCommand {
         outputCharset: 'utf-8',
         templates: {
           'index.xtpl': `{{% ${htmlContent} %}}`
-        }
+        },
+        $page: {
+          spm: [config.page.spmA, config.page.spmB],
+          title: config.page.title
+        },
+        author: config.air.author
       }
-    }], {
-      author: config.air.author
-    })
+    }])
   }
 
   printLogo () {
@@ -186,12 +193,15 @@ export default class PushCommand extends BaseCommand {
     // const pageDataSnippetFragment = yield this.parseSnippet(yield this.loadSnippet('page-data'))
     const linkSnippetFragment = yield this.parseSnippet(yield this.loadSnippet('link'))
     const resetStyleFragment = yield this.parseSnippet(yield this.loadSnippet('reset-style'))
+    const viewportFragment = yield this.parseSnippet(yield this.loadSnippet('viewport'))
 
     // remove
     this.removeChildnodesFromNode(headNode, BLACK_LIST_FILTER)
+    this.removeChildnodesFromNode(headNode, filterMetaViewport)
     this.removeChildnodesFromNode(bodyNode, BLACK_LIST_FILTER)
 
     // add
+    this.addNodesFromFragment(headNode, viewportFragment)
     this.addNodesFromFragment(headNode, resetStyleFragment)
     this.addNodesFromFragment(headNode, patchjsLoadSnippetFragment)
     this.addNodesFromFragment(headNode, linkSnippetFragment)
