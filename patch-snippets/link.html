@@ -34,8 +34,13 @@
             var qs = href.slice(splitterIndex, href.length);
             var queryObject = ap.parseQueryString(qs);
 
-            // TODO
-            // 手工处理 SPM 参数
+            // 处理页面 spm
+            // TODO: c?d?
+            if (window.__UNIVERSAL_SPM__) {
+              if (!queryObject.spm) {
+                queryObject.spm = window.__UNIVERSAL_SPM__.getPageSPM().join('.');
+              }
+            }
 
             window.ap.pushWindow({
               url: url,
