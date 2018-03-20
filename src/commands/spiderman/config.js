@@ -1,9 +1,9 @@
 const ENV = process.env.ENV || 'daily'
 const GROUP = 'alim'
 const PROJECT = 'alipay-hysc'
-const VERSION = '5.0.4'
+const VERSION = '6.2.0'
 const FILE = 'index.js'
-const AUTHOR = 112754
+const AUTHOR = 139013
 const OUTDIR = 'bundlejs'
 
 const config = {
