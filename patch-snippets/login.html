@@ -1,0 +1,41 @@
+<script>
+  if (window.ap && /AliApp\(AP\//ig.test(window.navigator.userAgent)) {
+    // 需要重定向的地址
+    var R_URL =
+      'alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fair.1688.com%2Fapps%2Falim%2Falipay-hysc%2Fap.html%3F__pageId__%3D6370%26tracelog%3D20180328zfb&showLoading=YES&pullRefresh=YES&transparentTitle=auto&bounceTopColor=15009827&bounceBottomColor=15009827&showOptionMenu=NO&showProgress=NO';
+
+    // cn login cookie id
+    var CN_LOGIN_COOKIE_ID = '__cn_logon_id__';
+
+    // @see https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+
+    if (!getCookie(CN_LOGIN_COOKIE_ID)) {
+      window.ap.pushWindow({
+        url: 'https://m.1688.com/pass.html',
+        data: {
+          done: encodeURIComponent(R_URL)
+        },
+        // 容器启动参数
+        params: {
+          showLoading: "YES",
+          transparentTitle: "none",
+          pullRefresh: "YES",
+          showOptionMenu: "YES"
+        }
+      });
+
+      // 本当前栈退出
+      window.ap.popWindow();
+    }
+  }
+</script>

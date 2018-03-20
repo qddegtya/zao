@@ -194,6 +194,7 @@ export default class PushCommand extends BaseCommand {
     const linkSnippetFragment = yield this.parseSnippet(yield this.loadSnippet('link'))
     const resetStyleFragment = yield this.parseSnippet(yield this.loadSnippet('reset-style'))
     const viewportFragment = yield this.parseSnippet(yield this.loadSnippet('viewport'))
+    const loginFragment = yield this.parseSnippet(yield this.loadSnippet('login'))
 
     // remove
     this.removeChildnodesFromNode(headNode, BLACK_LIST_FILTER)
@@ -204,6 +205,7 @@ export default class PushCommand extends BaseCommand {
     this.addNodesFromFragment(headNode, viewportFragment)
     this.addNodesFromFragment(headNode, resetStyleFragment)
     this.addNodesFromFragment(headNode, patchjsLoadSnippetFragment)
+    this.addNodesFromFragment(headNode, loginFragment)
     this.addNodesFromFragment(headNode, linkSnippetFragment)
     this.addNodesFromFragment(headNode, webRaxFrameworkSnippetFragment)
     this.addNodesFromFragment(headNode, polyfillSnippetFragment)
