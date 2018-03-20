@@ -5,6 +5,10 @@
     var R_URL =
       'https://air.1688.com/apps/alim/alipay-hysc/ap.html?__pageId__=6370&tracelog=20180328zfb';
 
+    var R_SCHEMA_URL =
+      'alipays://platformapi/startapp?appId=20000067&url=' + encodeURIComponent(R_URL) +
+      '&showLoading=YES&pullRefresh=YES&transparentTitle=none&showOptionMenu=YES&showProgress=NO';
+
     // cn login cookie id
     var CN_LOGIN_COOKIE_ID = '__cn_logon_id__';
 
@@ -21,22 +25,27 @@
     }
 
     if (!getCookie(CN_LOGIN_COOKIE_ID)) {
-      window.ap.pushWindow({
-        url: 'https://m.1688.com/pass.html',
-        data: {
-          done: encodeURIComponent(R_URL)
-        },
-        // 容器启动参数
-        params: {
-          showLoading: "YES",
-          transparentTitle: "none",
-          pullRefresh: "YES",
-          showOptionMenu: "YES"
-        }
+
+      window.ap.redirectTo({
+        url: R_SCHEMA_URL
       });
 
-      // 本当前栈退出
-      window.ap.popWindow();
+      // FIXME: ios popWindow has some problem
+      // window.ap.pushWindow({
+      //   url: 'https://m.1688.com/pass.html',
+      //   data: {
+      //     done: encodeURIComponent(R_URL)
+      //   },
+      //   // 容器启动参数
+      //   params: {
+      //     showLoading: "YES",
+      //     transparentTitle: "none",
+      //     pullRefresh: "YES",
+      //     showOptionMenu: "YES"
+      //   }
+      // });
+
+      // window.ap.popWindow();
     }
   }
 </script>
