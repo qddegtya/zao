@@ -174,6 +174,14 @@ export default class PushCommand extends BaseCommand {
       return this.getNodeFromDocument(document, nodeName)
     }
     const headNode = yield getNodeFromRootDocument('head')
+    
+    // 修改标题    
+    headNode.childNodes.forEach((node) => {
+      if (node.nodeName === 'title') {
+        node.childNodes[0].value = config.air.title
+      }
+    })
+
     const bodyNode = yield getNodeFromRootDocument('body')
     const patchjsLoadSnippet = yield this.loadSnippet('load-patchjs')
     const patchjsLoadSnippetFragment = yield this.parseSnippet(patchjsLoadSnippet)

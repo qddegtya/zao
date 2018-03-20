@@ -1,7 +1,7 @@
 const ENV = process.env.ENV || 'daily'
 const GROUP = 'alim'
 const PROJECT = 'alipay-hysc'
-const VERSION = '6.2.5'
+const VERSION = '6.2.7'
 const FILE = 'index.js'
 const AUTHOR = 112754
 const OUTDIR = 'bundlejs'
@@ -15,7 +15,8 @@ const config = {
   air: {
     pageId: 6370,
     productId: 1970,
-    author: AUTHOR
+    author: AUTHOR,
+    title: '赊账进货'
   },
   env: ENV,
   assets: {
