@@ -1,20 +1,11 @@
 <script>
   if (window.ap && /AliApp\(AP\//ig.test(window.navigator.userAgent)) {
-    var FROM_FLAG = 'passport';
-
     // 需要重定向的地址
     var R_URL =
-      'https://air.1688.com/apps/alim/alipay-hysc/ap.html?__pageId__=6370&tracelog=20180328zfb';
-
-    if (lib.env.params.from === FROM_FLAG) {
-      window.ap.redirectTo({
-        url: 'alipays://platformapi/startapp?appId=20000067&url=' + encodeURIComponent(R_URL) +
-          '&showLoading=YES&pullRefresh=YES&transparentTitle=auto&bounceTopColor=15009827&bounceBottomColor=15009827&showOptionMenu=NO&showProgress=NO'
-      });
-    }
+      'https://air.1688.com/apps/alim/alipay-hysc-redirect/index.html';
 
     var R_PASS_URL =
-      'https://m.1688.com/pass.html?done=' + R_URL + '&from=' + FROM_FLAG;
+      'https://m.1688.com/pass.html?done=' + R_URL;
 
     // cn login cookie id
     var CN_LOGIN_COOKIE_ID = '__cn_logon_id__';
