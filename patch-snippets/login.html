@@ -21,9 +21,15 @@
       }
       return null;
     }
-    
+
     // !getCookie(CN_LOGIN_COOKIE_ID)
     if (true) {
+
+      (lib && lib.mtop) && (
+        lib.mtop.config.prefix = 'h5api',
+        lib.mtop.config.subDomain = 'm',
+        lib.mtop.config.mainDomain = '1688.com'
+      );
 
       // 继续尝试使用接口获取
       var loginPromise = lib && lib.mtop && lib.mtop.request({
