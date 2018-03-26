@@ -20,7 +20,9 @@ const BLACK_LIST = [
   'wing',
   'lofty',
   'air',
-  'web-rax-framework'
+  'web-rax-framework',
+  'lib-mtop',
+  'lib-promise'
 ]
 
 const BLACK_LIST_REG = new RegExp(BLACK_LIST.join('|'))
@@ -213,10 +215,10 @@ export default class PushCommand extends BaseCommand {
     this.addNodesFromFragment(headNode, viewportFragment)
     this.addNodesFromFragment(headNode, resetStyleFragment)
     this.addNodesFromFragment(headNode, patchjsLoadSnippetFragment)
+    this.addNodesFromFragment(headNode, polyfillSnippetFragment)
     this.addNodesFromFragment(headNode, loginFragment)
     this.addNodesFromFragment(headNode, linkSnippetFragment)
     this.addNodesFromFragment(headNode, webRaxFrameworkSnippetFragment)
-    this.addNodesFromFragment(headNode, polyfillSnippetFragment)
     // this.addNodesFromFragment(headNode, pageDataSnippetFragment)
     this.addNodesFromFragment(headNode, fastclickSnippetFragment)
 
