@@ -37,7 +37,7 @@
       );
 
       // 继续尝试使用接口获取
-      var loginPromise = lib && lib.mtop && lib.mtop.request({
+      var loginPromise = lib && lib.mtop && lib.mtop.H5Request({
         api: 'mtop.1688.wireless.sync.cookie',
         v: '1.0',
         data: {},
@@ -82,4 +82,62 @@
       // window.ap.popWindow();
     }
   }
+  
+  // var isMock = location.search.indexOf('mock=1') >= 0;
+
+  // if (isMock || window.ap && /AliApp\(AP\//ig.test(window.navigator.userAgent)) {
+  //   // 需要重定向的地址
+  //   var R_URL =
+  //     'https://air.1688.com/apps/alim/alipay-hysc-redirect/index.html' + (isMock ? '?mock=true' : '?mock=false');
+
+  //   var R_URL_LOGINED = R_URL + '&logined=true';
+
+  //   var ENCODED_R_URL = encodeURIComponent(R_URL);
+  //   var ENCODED_R_URL_LOGINED = encodeURIComponent(R_URL + '&logined=true');
+
+  //   var R_PASS_URL =
+  //     'https://m.1688.com/pass.html?done=' + ENCODED_R_URL;
+
+  //   var LOGIN_URL = 'https://login.m.taobao.com/login.htm?loginFrom=wap1688&redirectURL=' + ENCODED_R_URL;
+  //   var LOGIN_URL_LOGINED = 'https://login.m.taobao.com/login.htm?loginFrom=wap1688&redirectURL=' +
+  //     ENCODED_R_URL_LOGINED;
+
+  //   // cn login cookie id
+  //   var CN_LOGIN_COOKIE_ID = '__cn_logon_id__';
+
+  //   // @see https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
+  //   function getCookie(name) {
+  //     var nameEQ = name + "=";
+  //     var ca = document.cookie.split(';');
+  //     for (var i = 0; i < ca.length; i++) {
+  //       var c = ca[i];
+  //       while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+  //       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  //     }
+  //     return null;
+  //   }
+
+  //   // !getCookie(CN_LOGIN_COOKIE_ID)
+  //   if (isMock || !getCookie(CN_LOGIN_COOKIE_ID)) {
+  //     if (location.search.indexOf('passed=true') >= 0) {
+  //       if (location.search.indexOf('logined=true')) {
+  //         console.log('logined=true');
+  //         window.location.href = R_URL_LOGINED;
+  //       } else {
+  //         console.log('passed=true');
+  //         window.location.href = LOGIN_URL_LOGINED;
+  //       }
+  //     } else {
+  //       console.log('first to pass url');
+  //       // 如果取不到 cookie
+  //       window.location.href = R_PASS_URL;
+  //     }
+  //   } else {
+  //     // alert('取到 cookie');
+      
+  //     // pass
+  //     console.log('cookie getted, do not need to log in.');
+  //   }
+  // }
+  
 </script>

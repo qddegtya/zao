@@ -1,7 +1,7 @@
 const ENV = process.env.ENV || 'daily'
 const GROUP = 'alim'
 const PROJECT = 'alipay-hysc'
-const VERSION = '6.4.9'
+const VERSION = '7.0.0'
 const FILE = 'index.js'
 const AUTHOR = 112754
 const OUTDIR = 'bundlejs'
@@ -36,7 +36,7 @@ const config = {
   },
   // FIXME
   // 从页面上自动爬取
-  page:{
+  page: {
     spmA: 'a262eq',
     spmB: '11280316',
     title: '货源市场 328 支付宝专项'
