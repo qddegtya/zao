@@ -118,7 +118,7 @@ export default class PushCommand extends BaseCommand {
     return client
     .publishPage([{
       config: {
-        path: `/apps/alim/alipay-hysc/${config.container.name}.html`,
+        path: `/apps/${config.assets.group}/${config.assets.project}/${config.container.name}.html`,
         productId: config.air.productId,
         publishType: config.env === 'production' ? 'release' : 'prepub',
         terminalType: 'phone'

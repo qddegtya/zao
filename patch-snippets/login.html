@@ -23,7 +23,12 @@
     }
 
     // !getCookie(CN_LOGIN_COOKIE_ID)
-    if (true) {
+    if (!getCookie(CN_LOGIN_COOKIE_ID)) {
+
+      // window.ap.redirectTo({
+      //   url: 'alipays://platformapi/startapp?appId=20000067&url=' + encodeURIComponent(R_PASS_URL) +
+      //     '&showLoading=NO&pullRefresh=NO&transparentTitle=none&showOptionMenu=YES&showProgress=YES'
+      // });
 
       (lib && lib.mtop) && (
         lib.mtop.config.prefix = 'h5api',
@@ -36,22 +41,27 @@
         api: 'mtop.1688.wireless.sync.cookie',
         v: '1.0',
         data: {},
+        jsonpIncPrefix: 'alipayHyscLoginPatch',
         ecode: 1
       });
 
       loginPromise && loginPromise.then && loginPromise
         .then(function (ret) {
-          console.log('get cookie mtop data: ', ret);
-
-          if (ret.data.success === 'false') {
+          if (ret && ret.data && ret.data.success === 'true') {
+            // pass
+          } else {
             window.ap.redirectTo({
               url: 'alipays://platformapi/startapp?appId=20000067&url=' + encodeURIComponent(R_PASS_URL) +
                 '&showLoading=NO&pullRefresh=NO&transparentTitle=none&showOptionMenu=YES&showProgress=YES'
             });
           }
         }, function (error) {
-          // pass
-          console.log('get cookie mtop error.', error);
+          // TODO
+          // 是否考虑一种极端情况，就是 mtop 失败导致的循环重定向
+          window.ap.redirectTo({
+            url: 'alipays://platformapi/startapp?appId=20000067&url=' + encodeURIComponent(R_PASS_URL) +
+              '&showLoading=NO&pullRefresh=NO&transparentTitle=none&showOptionMenu=YES&showProgress=YES'
+          });
         });
 
       // FIXME: ios popWindow 行为有问题
