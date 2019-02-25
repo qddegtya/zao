@@ -1,8 +1,7 @@
 import cli from 'commander'
 import fs from 'fs'
 import path from 'path'
-import co from 'co'
-import { util, github, self } from './helper'
+import { self } from './helper'
 import debugFactory from 'debug'
 
 const debug = debugFactory('zao:cli')

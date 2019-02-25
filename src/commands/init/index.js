@@ -1,4 +1,3 @@
-import co from 'co'
 import BaseCommand from '../base'
 
 export default class InitCommand extends BaseCommand {
@@ -12,13 +11,6 @@ export default class InitCommand extends BaseCommand {
   }
 
   * do () {
-    console.log(this.cwd)
-  }
-
-  action () {
-    co(this.do.bind(this))
-    .catch((err) => {
-      // error handler
-    })
+    console.log(this.context)
   }
 }

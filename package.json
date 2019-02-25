@@ -1,6 +1,6 @@
 {
   "name": "zao-cli",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "造（Zao）- 基于 Github 管理的造轮子模板（脚手架）管理工具",
   "bin": {
     "zao": "./bin/zao"
@@ -27,13 +27,7 @@
   },
   "homepage": "https://github.com/qddegtya/zao#readme",
   "dependencies": {
-    "@ali/air-cli-sdk": "^1.0.6",
-    "@ali/just-mobile-core": "^1.0.2",
-    "commander": "^2.11.0",
-    "gradient-string": "^1.0.0",
-    "html-minifier": "^3.5.10",
-    "parse5": "^4.0.0",
-    "urllib": "^2.26.0"
+    "commander": "^2.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

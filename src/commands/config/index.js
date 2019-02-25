@@ -1,4 +1,3 @@
-import co from 'co'
 import BaseCommand from '../base'
 
 export default class ConfigCommand extends BaseCommand {
@@ -11,13 +10,6 @@ export default class ConfigCommand extends BaseCommand {
   }
 
   * do () {
-    console.log(this.env)
-  }
-
-  action () {
-    co(this.do.bind(this))
-    .catch((err) => {
-      // error handler
-    })
+    console.log(this.context)
   }
 }

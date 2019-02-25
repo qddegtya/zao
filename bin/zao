@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-var main = require('../lib/cli').default
+var main = require('../lib/bootstrap-cli').default
 main()
