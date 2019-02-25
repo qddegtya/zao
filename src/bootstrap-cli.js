@@ -46,8 +46,7 @@ export default () => {
 
   // inject commands
   const modules = fs.readdirSync(COMMANDS_DIR)
-    // FXIME
-    // why not detect file exits ?
+    // FIXME: why not detect file exists ?
     .filter(i => !/base\.js/.test(i))
     .map((moduleEntry) => {
       let modulePath = path.join(COMMANDS_DIR, moduleEntry)

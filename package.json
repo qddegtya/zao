@@ -18,9 +18,10 @@
   "keywords": [
     "zao",
     "github",
-    "template"
+    "template",
+    "scaffold"
   ],
-  "author": "qddegtya",
+  "author": "xiaoa",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/qddegtya/zao/issues"
