@@ -1,4 +1,7 @@
 #!/usr/bin/env node
 
-var main = require('../lib/bootstrap-cli').default
-main()
+var bootstrap = require('cf')
+
+bootstrap({
+  root: ""
+});

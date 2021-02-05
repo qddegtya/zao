@@ -1,3 +1,3 @@
 # Zao
 
-> 📦 manage your `scaffold` based on github
+> 🔨 Tiny & elegant scaffolding tool.
